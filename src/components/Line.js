@@ -4,6 +4,13 @@ import { auth, db } from '../firebase'
 import { limit, orderBy } from 'firebase/firestore';
 import SendMessage from './SendMessage';
 
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { avatarClasses } from '@mui/material';
+
 function Line() {
     const [messages, setMessages] = useState([]);
     useEffect(() => {
@@ -16,14 +23,21 @@ function Line() {
     }, []);
     return (
         <div>
-            {console.log(messages)}
+            {/* {console.log(messages)} */}
             <SignOut />
             <div className="msgs">
-                {messages.map(({ id, text, photoURL, uid }) => (
-                    <div>
+                {messages.map(({ id, text, photoURL, uid, createdAt, fileURL }) => (
+                    <div className='rinn'>
                         <div key={id} className={`msg ${uid === auth.currentUser.uid ? "sent" : "received"}`}>
-                            <img src={photoURL} alt="" />
-                            <p>{text}</p>
+                            <img id='aikon' src={photoURL} alt="" />
+                            {fileURL ? (
+                                <img src={fileURL} alt="Uploaded file" style={{ maxWidth: '100%', maxHeight: '400px' }} />
+                            ) : (
+                                <p>{text}</p>
+                            )}
+                        </div>
+                        <div className={` ${uid === auth.currentUser.uid ? "sent1" : "received1"}`}>
+                            <p className='zikan'>{createdAt ? createdAt.toDate().toLocaleString() : 'Unknown'}</p>
                         </div>
                     </div>
 
@@ -32,7 +46,8 @@ function Line() {
 
             </div>
             <SendMessage />
-        </div>
+
+        </div >
     )
 }
 

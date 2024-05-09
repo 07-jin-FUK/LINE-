@@ -11,7 +11,7 @@ function SignIn() {
     }
     return (
         <div>
-            <Button onClick={signInWithGoogle}>グーグルでログインする</Button>
+            <Button variant="contained" onClick={signInWithGoogle} style={{ marginLeft: "20%", marginTop: "20%", fontSize: "50px" }}>Googleアカウントでログインする</Button>
         </div>
     );
 

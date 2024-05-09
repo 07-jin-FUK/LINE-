@@ -1,0 +1,185 @@
+
+
+今回の感想
+
+LINEAppを作るにあたって苦労したこと。
+・JSライブラリのReactを実践してみた。
+Node.jsとnpmのインストールなど、ターミナルを介しての作業も多く、
+今まで作ってきたコード手順とは大きな違いを感じた。
+特に、コード場面でも、HTMLに今まで書いてきたことをほぼJSに記載、
+importの機能を多用していると感じた、アプリ化を目指すうえで、
+関数の定義づけがコマンドのメインとなっていくと感じた、
+後は、要素、関数の種類をもっと勉強していきたい。
+
+前回からの成長
+動画を見ながらではあるが、コピペをすることはなかった。
+自分で書くことで、何度もエラーはでたがそのたびに悩めたので良かった。
+
+
+マテリアルUIはこちら
+https://high-career.jp/2022/03/08/material/
+
+Reactは、次のような分野で活用されています。
+
+・SPA開発
+・大規模なWebアプリ開発
+・スマホアプリ開発
+
+React NativeによってiOSアプリとAndroidアプリを一括で開発出来る！
+
+Reactとは、Webアプリのユーザーインターフェース(UI)構築に特化したJavaScriptライブラリです。React.js（リアクトジェイエス）
+
+UIとは「User Interface（ユーザーインターフェイス）」の略称です。
+Interfaceには、本来「接点、接触面」という意味があります。
+コンピューター関係でUIと言うときは、ユーザーとコンピューターあいだで情報をやり取りするさまざまな機器や入力装置を指すのです。
+コンピューター関係のUIは多岐にわたり、マウスやキーボードはもちろんのこと、マイクやスピーカーなどの音声入力装置、
+ディスプレイなどの画面表示装置などがあります。さらに、UIは装置にとどまらず製品そのものの外観も含まれますし、
+webサービスにおいてはwebページのデザインやフォントなどもUIに含まれるのです。
+洗練されたUIは、ユーザーとコンピューター間の情報のやり取りをスムーズにし、快適な操作を可能とします。
+
+
+
+
+アロー関数
+=> 
+機能としては　functionと同じ
+早い。引数２つはエラー　value1,value2 =>はできないので（value1,value2）＝＞にする
+
+DOM の作成
+const divEl =document.createElement("div")
+const pEl =document.createElement("p")
+divEl.appendChild(pEl) divタグにpを入れててきな　２個すると末尾に追加
+
+ReactはJSX記法　→　ｊｓにｈｔｍｌをかけるのが魅力
+コンポーネント　意味　構成要素
+
+レンダリング（render)とは、コンピュータグラフィックス(CG)の用語であり、
+コンピュータ上のデジタルデータをプログラムによって演算し、画像として可視化し、ディスプレイ上に表示できるようにすること
+
+
+SPA（Single Page Application シングルページアプリケーション）とは
+HTML ページを最初に一度読み込んだのち、従来の Web アプリケーションのようなページ遷移を行わず、
+1つのページ内で JavaScript による情報の取得、描画などを行うタイプの Web アプリケーション。
+
+Reactでもフォルダ作成してnpmでスタートすると基本的にこのファイル定型がもらえるので残したいものだけ残して、消す
+ｈｔｍｌはさわらない　...1
+Reactでは
+キャメルケース　単語のつなぎを大文字にする記法　onclick -> onClick
+
+
+まずindex.jsから
+import React from 'react';　reactからReactというモジュールを作る
+import ReactDOM from 'react-dom/client';　これも定型文
+import App from './App';
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));　これも定型文　...1の部分
+root.render(    renderはもともとある関数
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+コードを役割ごとに分けるのは重要
+難しい昨日だと何千行になるので、分割させてすっきりさせる
+
+次にApp.jsを作成
+
+ほかのファイルでも使えるようにexport
+機能を追加
+
+基本的にほかでも使いそうなときは下にexport
+他のファイルではうえにimport
+
+今回でいうと、
+indexが基盤だから
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>　問題点見つけてくれるモード
+    <App />
+  </React.StrictMode>
+  Appをimpportする必要があり、　　import App from './App';　を追加
+  App側では　exportしないといけない　　export default App;
+この時の　default 　本来　import App from のところは　import ｛App｝ from　だけど｛｝省略可能
+モジュールごと渡すなら　いい機能
+たとえば　App.js の変数を２個だけimportしたいときは、defaultは使用不可　import {a,b} from "./App
+好きな変数名にできるのもdefaultいいところ
+何もなしで　変数名が長いなどで、自由に変数名を変えたいときは　importする側で、｛　○○　as　△△｝と定義すると、
+長い○○というモジュールも、簡単にコーディングできる。
+ファイル名　.js ->　.jsx 
+
+cssの書き方
+基本的に　style={{ color:"red" これはオブジェクトとして処理  }}　　color 等の名前の後の指定は””でくくる
+
+重要！！　cssで書いていた　font-size のような書き方はJS上ではできない！！
+―　ハイフンが認められない
+キャメルケース　に従って　fontSize とかく
+
+全体の色付けは　const contentStyle = {
+    color : "red",
+    fontSize : "20px"
+};
+のような表記が可能
+
+
+jsの内容をそのまま入れ込む考え
+今回でいうと、App.js内の＜SignIn /＞は　SignIn.js　をいれこんでimportしている。もちろん上にはimport SignIn from './components/SignIn';
+
+難所　props
+簡単に言うと　何回も、
+ここの背景は　青、メッセージはこれ　のように指定するのめんどいから
+渡す方を
+xxxxが　pタグを追加する関数として
+文章　bun.js
+const xxxx =(props)=>{
+    color:props.color,
+}
+return <p style={xxxx}>{props.message}</p>
+
+importする側
+<div>
+<bun /> ー＞　<bun color : "pink" message:"ahahaha" />のように変更可能
+</div>
+
+おなじような形の文章や枠を入れたいときに、最適かも
+
+children は　適当に　＜関数＞＜／関数＞の中身を丸ごと渡せる
+
+react の中には、useState　useEffectのような関数を保有している。どちらもreactから import する
+useStateは
+const [A,B] = useState();
+が基本
+Aが初期値、　Bが変化値を示す。
+クリックしたときにBをA+1と定義していれば増やす作業や
+ステータスを示すことが多い。
+
+useEffect(実行する関数、[依存する値])
+ある値が変わったときに限り、ある処理を実行する
+
+TypeScript
+microosoftが出しているオープンソースな言語 : ○○で定義づけしてあげる
+string 文字列
+let str: string = "A"
+str ="10" //ok
+str = 10 //ng
+
+number 数値
+let num : number = 0;
+
+num = 10; //ok
+num = "10"; //ng
+
+boolean 
+let bool: boolean = true;
+bool = false; //ok
+bool = 10; //ng
+
+const arr1 : Array<number> =[0,1,2];
+let arr2: number[] =[0,1,2]
+
+
+
+
+
+
+
