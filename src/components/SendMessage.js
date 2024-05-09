@@ -69,6 +69,9 @@ function SendMessage() {
 
 
 
+    // vdshvofsnvdipghsfpejbspi sdfjgwepfhdgsdjnv;sljhascifsjwmfkls;adaptV4Theme;oroqshyfwppfhasvopehtqwithegpsd
+
+
     function handleSendIconClick(e) {
         e.preventDefault(); // イベントのデフォルト動作をキャンセル
         sendMessage(e); // イベントオブジェクトを渡して sendMessage 関数を呼び出す
