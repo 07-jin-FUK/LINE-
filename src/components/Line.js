@@ -3,7 +3,6 @@ import SignOut from './SignOut'
 import { auth, db } from '../firebase'
 import { limit, orderBy } from 'firebase/firestore';
 import SendMessage from './SendMessage';
-
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -16,7 +15,7 @@ function Line() {
     useEffect(() => {
         db.collection("messeges")
             .orderBy("createdAt")
-            .limit(50)
+            .limit(500)
             .onSnapshot((snapshot) => {
                 setMessages(snapshot.docs.map((doc) => doc.data()));
             });

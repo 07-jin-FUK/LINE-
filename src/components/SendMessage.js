@@ -17,10 +17,9 @@ function SendMessage() {
     const [file, setFile] = useState(null); // 追加
     // const [isCameraOpen, setIsCameraOpen] = useState(false); // カメラが開かれているかどうかの状態
 
-
-
     function sendMessage(e) {
         e.preventDefault();
+
         const { uid, photoURL } = auth.currentUser;
 
 
@@ -68,9 +67,14 @@ function SendMessage() {
     //     }
     // }
 
-    function handleSendIconClick() {
-        sendMessage();
+
+
+    function handleSendIconClick(e) {
+        e.preventDefault(); // イベントのデフォルト動作をキャンセル
+        sendMessage(e); // イベントオブジェクトを渡して sendMessage 関数を呼び出す
     }
+
+
 
     function handleFileChange(e) {
         if (e.target.files[0]) {
@@ -131,7 +135,7 @@ function SendMessage() {
                     )}
                     <SendIcon
                         style={{ color: "#7AC2FF", marginLeft: "20px", cursor: "pointer" }}
-                        onClick={handleSendIconClick}
+                        onClick={handleSendIconClick} // 修正
                     />
 
                     <FilePresentIcon style={{ color: "#7AC2FF", marginLeft: "20px" }} />
@@ -161,10 +165,6 @@ function SendMessage() {
                         onClick={handleCameraClick} // カメラアイコンをクリックしたときの処理
                     />
                     {isCameraOpen && <Camera onCapture={(imageSrc) => setFile({ file: imageSrc, url: imageSrc })} />} */}
-                    {/* <CameraAltIcon
-                        style={{ color: "#7AC2FF", marginLeft: "20px", cursor: "pointer" }}
-
-                    /> */}
 
 
                 </div>
