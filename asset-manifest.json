@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/LINE-/static/css/main.228b997e.css",
+    "main.js": "/LINE-/static/js/main.5aa0675d.js",
+    "static/media/supo.mp3": "/LINE-/static/media/supo.fcd907e5b3a17f8050c4.mp3",
+    "index.html": "/LINE-/index.html",
+    "main.228b997e.css.map": "/LINE-/static/css/main.228b997e.css.map",
+    "main.5aa0675d.js.map": "/LINE-/static/js/main.5aa0675d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.228b997e.css",
+    "static/js/main.5aa0675d.js"
+  ]
+}
